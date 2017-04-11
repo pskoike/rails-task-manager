@@ -1,0 +1,21 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text-center padded-xs">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading text-center padded-xs">
+                <h1>TASKS</h1><%= link_to('Add task', new_task_path, class: 'btn btn-default btn-block btn-md') %></div>
+            <table class="table table-striped">
+                <% @tasks.each do |t| %>
+                <tr>
+                    <td><%= t.name %></td>
+                    <td>
+                        <%= '<i class="fa fa-check"></i>'.html_safe if t.done %></td>
+                    <td>
+                        <%= t.created_at.strftime( "Created at %m/%d/%Y") %></td>
+                    <td><%= link_to('edit', edit_task_path(t.id), class: 'btn btn-primary btn-xs') %></td>
+                    <td>
+                        <%= link_to('Delete', task_path(t.id), method: :delete, class: 'btn btn-danger btn-xs') %></td>
+                    <% end %>
+                </div>
+            </div>
+        </div>
